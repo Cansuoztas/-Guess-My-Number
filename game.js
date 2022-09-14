@@ -10,6 +10,8 @@ console.log(randomNumber);
 //? Variables
 let score = 10;
 // let topScore = 0;
+let clap = new Audio("sounds/clapsound.wav");
+let wrongsound = new Audio("sounds/wrongsound.wav");
 
 //? localStorage'de topScore adiyla bir degisken olustur.
 let topScore = localStorage.getItem("topScore") || 0;
@@ -31,6 +33,7 @@ document.querySelector(".check-btn").addEventListener("click", () => {
     msg.innerHTML = `Congrats You Win <i class="fa-solid fa-face-grin-hearts fa-2x"></i> `;
     body.className = "bg-success";
     document.querySelector(".check-btn").disabled = true;
+    clap.play();
     if (score > topScore) {
       // topScore = score;
 
@@ -53,6 +56,7 @@ document.querySelector(".check-btn").addEventListener("click", () => {
       document.querySelector(".secret-number").textContent = randomNumber;
       body.className = "bg-danger";
       document.querySelector(".check-btn").disabled = true;
+      wrongsound.play();
     }
 
     document.querySelector(".score").textContent = score;
